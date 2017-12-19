@@ -8,8 +8,16 @@ import numpy as np
 img = cv2.imread('.\Images/0001.jpg')
 img_original = img.copy()
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+
+#p1 : 원점에서 거리 50
+#p2 : 각도가 150
+#p3 : Aperture size for the Sobel() operator[Sobel() 연산을 위한 조리개 사이즈]
 edges = cv2.Canny(gray, 50,150, apertureSize = 3)
 
+#p1 : edges
+#p2 : rho accuracies(픽셀은 라디안단위로 측정됨)
+#p3 : theta accuracies
+#p4 : threshold(탐지되는 최소의 거리)
 lines = cv2.HoughLines(edges, 1, np.pi/180, 700)
 
 
